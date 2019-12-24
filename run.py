@@ -7,8 +7,14 @@ Created on Mon Dec 23 22:14:18 2019
 import preprocessing.py as pp
 import io_utils as iou
 import configparser # read configurations 
+import logging
+import logging.config
+from os import path
 
 
+#load logger config
+log_file_path = path.join(path.dirname(path.abspath(__file__)), 'logger.conf')
+logging.config.fileConfig(log_file_path)
 
 #read Config Files 
 Config = configparser.ConfigParser()
@@ -28,7 +34,7 @@ files_df = iou.get_apps_from_folder('path to folder')
 #                                    , Lang = 'fa' , appType = 'games')
 
 docs = files_df["text"].values
-print(str(len(docs)) + ' documents loaded.')
+logging.debug(str(len(docs)) + ' documents loaded.')
 print(files_df[1:10])
 print(files_df.columns)
 
