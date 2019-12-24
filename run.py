@@ -4,7 +4,7 @@ Created on Mon Dec 23 22:14:18 2019
 
 @author: eskandari
 """
-import preprocessing.py as pp
+import preprocessing as pp
 import io_utils as iou
 import configparser # read configurations 
 import logging
@@ -17,11 +17,10 @@ log_file_path = path.join(path.dirname(path.abspath(__file__)), 'logger.conf')
 logging.config.fileConfig(log_file_path)
 
 #read Config Files 
-Config = configparser.ConfigParser()
-Config.read("config.ini")
+config = configparser.ConfigParser()
+config.read("config.ini")
 
-stopwords_path_key = 'stopwords_path'
-stopwords_path = Config.get('preprocessing', stopwords_path_key )
+
 
 
 #load data           
@@ -39,6 +38,8 @@ print(files_df[1:10])
 print(files_df.columns)
 
 #preprocess data
+stopwords_path_key = 'stopwords_path'
+stopwords_path = config.get('preprocessing', stopwords_path_key )
 preprocessedDocs = pp.cleanText(docs , stopwords_path)
 
 # ready to do further processing

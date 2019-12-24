@@ -8,15 +8,11 @@ Created on Sat Dec 23 22:10:36 2019
 from __future__ import unicode_literals
 from hazm import *
 from nltk.stem.wordnet import WordNetLemmatizer
-from gensim.models import Phrases
-from gensim.corpora import Dictionary
 import pickle
 #hazm
 import re
 import html
 import pandas as pd
-import numpy as np
-import pickle
 
 
 
